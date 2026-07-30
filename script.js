@@ -1,4 +1,4 @@
-
+// function to add the new value 
 function appendValue(value) {
     const element = document.getElementById("display");
     const currentValue = element.value;
@@ -11,8 +11,34 @@ function appendValue(value) {
 }
 
 // function to clear the display
-
 function clearDisplay() {
     const element = document.getElementById("display");
     element.value = "0";
+}
+
+//function to add a negative sign before the number
+function negative() {
+    const element = document.getElementById("display");
+    const currentValue = element.value;
+    if (currentValue === "0") {
+        return;
     }
+    else if (currentValue.startsWith("-")) {
+        element.value = currentValue.slice(1);
+    }
+    else {
+        element.value = "-" + currentValue;
+    }
+}
+
+// function for the result 
+function result() {
+    const element = document.getElementById("display");
+    const currentValue = element.value;
+    try {
+        element.value = eval(currentValue);
+    }
+    catch {
+        element.value = "Error";
+    }
+}
