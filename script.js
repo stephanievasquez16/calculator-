@@ -2,7 +2,7 @@
 function appendValue(value) {
     const element = document.getElementById("display");
     const currentValue = element.value;
-    if (currentValue === "0") {
+    if (currentValue === "0" || currentValue === "Error") {
         element.value = value;
     }
     else {
