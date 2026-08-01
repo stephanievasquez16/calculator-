@@ -2,8 +2,20 @@
 function appendValue(value) {
     const element = document.getElementById("display");
     const currentValue = element.value;
-    if (currentValue === "0" || currentValue === "Error") {
+    const lastCharacter = currentValue.slice(-1);
+    if (currentValue === "0") {
+        if ("+-*/".includes(value)) {
+            element.value = currentValue + value; 
+        }
+        else {
+            element.value = value;
+        }
+    }   
+    else if (currentValue === "Error") {
         element.value = value;
+    }
+    else if ("+-*/".includes(lastCharacter) && "-+*/".includes(value)) {
+        return;
     }
     else {
         element.value += value;
@@ -36,9 +48,16 @@ function result() {
     const element = document.getElementById("display");
     const currentValue = element.value;
     try {
-        element.value = eval(currentValue);
+        let resultValue = eval(currentValue);
+        if (!Number.isFinite(resultValue)) {
+            resultValue = "Error";
+        }
+        element.value = resultValue; 
     }
     catch {
         element.value = "Error";
     }
 }
+
+
+
