@@ -12,6 +12,10 @@ function appendValue(value) {
         }
     }   
     else if (currentValue === "Error") {
+        if ("+-*/".includes(value)) {
+            return;
+        }
+        
         element.value = value;
     }
     else if ("+-*/".includes(lastCharacter) && "-+*/".includes(value)) {
