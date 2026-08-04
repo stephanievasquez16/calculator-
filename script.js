@@ -26,6 +26,18 @@ function appendValue(value) {
     }
 }
 
+// function division par 100
+function pourcentage() {
+    const element = document.getElementById("display");
+    const currentValue = Number(element.value);
+    if (element.value === "Error") {
+        return;
+    }
+    const valuePourcentage = currentValue / 100;
+    element.value = valuePourcentage
+
+}
+
 // function to clear the display
 function clearDisplay() {
     const element = document.getElementById("display");
